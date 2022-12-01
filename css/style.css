@@ -36,7 +36,7 @@ td a:hover {
 td .disabled {
     border: none;
 }
-.date_title, .hello {
+.date_title, .clicked {
     background-color: rgba(2, 112, 2, 0.85);
     width: 100%;
     font-weight: bold;
