@@ -1,6 +1,7 @@
-const selectDate = document.querySelectorAll("#dateSelector")
-let planContainer = document.querySelector("#planContainer")
-let dateContainer = document.querySelector("#dateContainer")
+const selectDate = document.querySelectorAll("#dateSelector");
+let planContainer = document.querySelector("#planContainer");
+let dateContainer = document.querySelector("#dateContainer");
+let totalAmount = document.querySelector("#totalAmount");
 
 var menu = [
     ["Cocoa-spiced Beef Tenderloin",
@@ -47,101 +48,61 @@ var menu = [
 const dateClicked = e => {
     let date = e.target.dataset.date
     e.target.style.color = "black"
-    e.target.classList = "hello"
-    console.log(date)
+    // e.target.classList.add("hello")
+    // selectDate.forEach(f => f.classList.remove('hello'));
+    e.target.classList.toggle("clicked");
 
+    if (e.target.classList.contains("clicked")) {
+        const menuCard = () => {
+            menu.forEach(p => {
+                mealGroup.innerHTML += `
+                
+                <div class="card border border-secondary">
+                        <img src="${p[4]}" class="card-img-top" alt="${p[0]}">
+                    <div class="card-body">
+                        <h5 class="card-title">${p[0]}</h5>
+                        <p class="card-text">${p[1]}</p>
+                    </div>
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item small">Price: <span class="fw-bold" id="price">${p[2]}</span></li>
+                        <li class="list-group-item small">${p[3]}
+                        </li>
+                        </ul>
+                    <div class="card-body">
+                        <label for="quantity">Quantity: </label>
+                        <input type="number" class="small" id="quantity" min="1">
+                    </div>
+                </div>`
+            })
+        }
+        e.target.classList.add("delete")
+
+        var main = document.createElement("div")
+        main.classList = "mb-3 deleteID"
+   
+        let dateTitle = document.createElement("p")
+        dateTitle.classList = "date_title fw-bold text-center py-2"
+        dateTitle.innerHTML = date + " MENU"
     
-    const menuCard = () => {
-        menu.forEach(p => {
-            mealGroup.innerHTML += `
-            
-            <div class="card border border-secondary">
-                    <img src="${p[4]}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${p[0]}</h5>
-                    <p class="card-text">${p[1]}</p>
-                </div>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item small">Price: <span class="fw-bold" id="price">${p[2]}</span></li>
-                    <li class="list-group-item small">${p[3]}
-                    </li>
-                    </ul>
-                <div class="card-body">
-                    <label for="quantity">Quantity: </label>
-                    <input type="number" class="small" id="quantity" min="1">
-                </div>
-            </div>`
-        })
+        let mealGroup = document.createElement("div")
+        mealGroup.classList = "card-group gap-4"
+  
+        planContainer.appendChild(main)
+        main.appendChild(dateTitle)
+        main.appendChild(mealGroup)
+        mealGroup.appendChild(menuCard())
+        
+
+       
+
+    } else if (e.target.classList.contains("delete")) {
+            var delMain = document.querySelector(".deleteID");
+            delMain.remove();
+            // main.remove()
     }
-
-    let main = document.createElement("div")
-    main.classList = "mb-3"
-
-    let dateTitle = document.createElement("p")
-    dateTitle.classList = "date_title fw-bold text-center py-2"
-    dateTitle.innerHTML = date + " MENU"
-
-    let mealGroup = document.createElement("div")
-    mealGroup.classList = "card-group gap-4"
-
-    planContainer.appendChild(main)
-    main.appendChild(dateTitle)
-    main.appendChild(mealGroup)
-    mealGroup.appendChild(menuCard())
  
 }
 
 for (let x of selectDate) {
     x.addEventListener("click", dateClicked)
 }
-
-let content = ""
-// MENU CARD
-
-
-// const dateClicked = e => {
-//     let date = e.target.dataset.value
-//     console.log(date)
-
-//     let dateTitle = document.createElement("span")
-//     dateTitle.classList = "date_title fw-bold text-center"
-//     dateTitle.innerHTML = date
-
-//     let mealGroup = document.createElement("div")
-//     mealGroup.classList = "card-group"
-
-//     planContainer.appendChild(dateTitle)
-//     // mealGroup.appendChild(menuCard())
-//     menuCard()
- 
-
-// }
-
-// for (let x of selectDate) {
-//     x.addEventListener("click", dateClicked)
-// }
-
-// let content = ""
-// // MENU CARD
-// const menuCard = () => {
-//     menu.forEach(p => {
-//         planContainer.innerHTML += `
-        
-//         <div class="card col-3">
-//                 <img src="${p[4]}" class="card-img-top" alt="...">
-//             <div class="card-body">
-//                 <h5 class="card-title">${p[0]}</h5>
-//                 <p class="card-text">${p[1]}</p>
-//             </div>
-//                 <ul class="list-group list-group-flush">
-//                 <li class="list-group-item small">Price: <span class="fw-bold" id="price">${p[2]}</span></li>
-//                 <li class="list-group-item small">${p[3]}
-//                 </li>
-//                 </ul>
-//             <div class="card-body d-flex">
-//                 <label for="quantity">Quantity: </label>
-//                 <input type="number" class="small" id="quantity" min="1">
-//             </div>
-//         </div>`
-//     })
-// }
