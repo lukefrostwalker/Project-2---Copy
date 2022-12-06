@@ -15,6 +15,7 @@ const meals = [
         <b>carbohydrates</b> 9 g;
         <b>potassium</b> 451 mg;`,
         imgSrc: "../img/beef-tenderloin.png",
+        numberOfUnits: 0
     },
     {
         id: 1,
@@ -32,6 +33,7 @@ const meals = [
         <b>carbohydrates</b> 26 g;
         <b>potassium</b> 424 mg;`,
         imgSrc: "../img/turkey-club-burger.jpg",
+
     },
     {
         id: 2,
@@ -49,6 +51,7 @@ const meals = [
         <b>carbohydrates</b> 15 g;
         <b>potassium</b> 874 mg;`,
         imgSrc: "../img/tuna.jpg",
+
     },
     {
         id: 3,
@@ -66,5 +69,6 @@ const meals = [
         <b>carbohydrates</b> 63 g;
         <b>potassium</b> 576 mg;`,
         imgSrc: "../img/pasta.jpg",
+
     }
 ]
